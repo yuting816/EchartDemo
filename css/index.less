@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+li {
+  list-style: none;
+}
+// 声明图表字体
+@font-face {
+  font-family: electronicFont;
+  src: url(../font/DS-DIGIT.TTF);
+}
+body {
+    background: url('../images/bg.jpg')
+    no-repeat top center;
+    line-height: 1.15;  
+}
+header {
+  position: relative;
+  height: 1.25rem;
+  background: url('../images/head_bg.png')
+  no-repeat;
+  background-size: 100% 100%;
+  h1 {
+    font-size: .475rem;
+    color: #fff;
+    text-align: center;
+    line-height: 1rem;
+  }
+  .showTime {
+    position: absolute;
+    right: .375rem;
+    top: 0;
+    line-height: .9375rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: .25rem;
+  }
+}
+
+// 页面主体盒子
+.mainbox {
+  display: flex;
+  min-width: 1024px;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: .125rem .125rem 0;
+  //将盒子分成3：5：3 共三份
+  .column {
+    flex: 3;
+    //找到第二个盒子，它占五份
+  }
+  .column:nth-child(2) {
+    flex: 5;
+    // 设置中间盒子外边距
+    margin:0 .125rem .1875rem;
+    // 设置超出部分隐藏
+    overflow: hidden;
+  }
+  .panel {
+    position: relative;
+    height: 3.875rem;
+    padding: 0 .1875rem .5rem;
+    border: 1px solid rgba(25, 186, 139, 0.17);
+    margin-bottom: .1875rem;
+    background: url(../images/line.png) rgba(255, 255, 255, 0.03);
+    // 画左上角边框
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      border-left: 2px solid #02a6b5;
+      border-top: 2px solid #02a6b5;
+      content: "";
+    }
+    // 右上角边框
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      border-top:2px solid #02a6b5;
+      border-right: 2px solid #02a6b5;
+      content: '';
+    }
+    .panel-footer {
+      position: absolute;
+      bottom:0;
+      left: 0;
+      width: 100%;
+      // 左下角边框
+      &::before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 10px;
+        height: 10px;
+        border-left: 2px solid #02a6b5;
+        border-bottom: 2px solid #02a6b5;
+        content: "";
+      }
+      // 右下角边框
+      &::after {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 10px;
+        height: 10px;
+        border-bottom:2px solid #02a6b5;
+        border-right: 2px solid #02a6b5;
+        content: "";
+      }
+    }
+    h2 {
+      height: .6rem;
+      color: #fff;
+      line-height: .6rem;
+      text-align: center;
+      font-size: .25rem;
+      font-weight: 400;
+      a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 0.125rem; 
+      }
+    }
+    .chart {
+      height: 3rem;
+    }
+
+  }
+}
+// no数字模块
+.no {
+   background: rgba(101, 132, 226, 0.1);
+   padding: 0.1875rem;
+   .no-hd {
+     position: relative;
+     border: 1px solid rgba(25, 186, 139, 0.17);
+     &::before {
+       position: absolute;
+       top: 0;
+       left: 0;
+       content: '';
+       width: 30px;
+       height: 10px;
+       border-top: 2px solid #02a6b5;
+       border-left: 2px solid #02a6b5;
+     }
+     &::after {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      content: '';
+      width: 30px;
+      height: 10px;
+      border-bottom: 2px solid #02a6b5;
+      border-right: 2px solid #02a6b5;
+    }
+     ul {
+       display: flex;
+       li {
+         position: relative;
+         flex:1;
+         line-height: 1rem;
+         font-size: .875rem;
+         color: #ffeb7b;
+         text-align: center;
+        //  使用自定义的电子版图标字体
+         font-family: "electronicFont"; 
+         &::after {
+           content: '';
+           position: absolute;
+           top: 25%;
+           right: 0;
+           height: 50%;
+           width: 1px;
+           background: rgba(255, 255, 255, 0.2);
+         }
+       }
+     }
+   }
+   .no-bd {
+     ul {
+       display: flex;
+       li {
+         flex: 1;
+         text-align: center;
+         color: rgba(255, 255, 255, 0.7);
+         font-size: .225rem;
+         height: .5rem;
+         line-height: .5rem;
+         padding-top: .125rem;
+         }
+
+     }
+   }
+}
+.map {
+  position: relative;
+  height: 10.125rem;
+  .map1 {
+    width: 6.475rem;
+    height: 6.475rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // 保证水平居中
+    transform: translate(-50%, -50%);
+    background: url(../images/map.png);
+    //让背景图片也缩放
+    background-size: 100% 100%;
+    opacity: 0.3;
+    }
+  .map2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8.0375rem;
+    height: 8.0375rem;
+    background: url(../images/lbx.png);
+    //保证缩放页面后 图片也是100%显示
+    background-size: 100% 100%;
+    // 调用动画，匀速(linear) 无限循环
+    animation: rotate1 15s linear infinite;
+    opacity: 0.6;
+  }
+  // 加动画，不停的旋转
+  @keyframes rotate1 {
+     from {
+      //  注意在旋转的同时保留原先的位置
+       transform: translate(-50%, -50%) 
+       rotate(0deg);
+     }
+     to {
+       transform: translate(-50%, -50%)
+       rotate(360deg)
+     }
+  }
+  .map3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7.075rem;
+    height: 7.075rem;
+    background: url(../images/jt.png);
+    background-size: 100% 100%;
+    // 调用动画，匀速(linear) 无限循环
+    animation: rotate2 10s linear infinite;
+    opacity: 0.6;
+  }
+  // 逆时针动画
+  @keyframes rotate2 {
+    from {
+     //  注意在旋转的同时保留原先的位置
+      transform: translate(-50%, -50%) 
+      rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%)
+      rotate(-360deg)
+    }
+  }
+  // 真正的地图模块
+  .chart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    // 宽度与父盒子一样，设置100%
+    width: 100%;
+    height: 10.125rem;
+  }
+}
+// 约束屏幕尺寸
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 42px !important;
+  }
+}
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 80px !important;
+  }
+}
